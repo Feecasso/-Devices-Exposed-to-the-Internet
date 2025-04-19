@@ -56,10 +56,13 @@ DeviceLogonEvents
 | where ActionType == "LogonSuccess"
 | where AccountName == "labuser"
 | summarize count() by DeviceName, ActionType, AccountName, RemoteIP
+## 🧠 MITRE ATT&CK Mapping
 
-Tactic | Technique | ID | Description
-Initial Access | Valid Accounts: Default Accounts | T1078.001 | Attempted access using default/known accounts (labuser).
-Credential Access | Brute Force | T1110 | High volume of failed login attempts from external IPs.
- | Password Guessing | T1110.001 | Indicates attackers may be attempting simple password variations.
-Discovery | System Network Configuration | T1016 | Adversaries likely identified system as internet-facing prior to attempts.
-Defense Evasion | (Potential) Log Tampering | T1070.004 | No successful unauthorized access, may imply log evasion (not confirmed).
+| Tactic             | Technique                         | ID         | Description                                                                 |
+|--------------------|-----------------------------------|------------|-----------------------------------------------------------------------------|
+| Initial Access     | Valid Accounts: Default Accounts  | T1078.001  | Attempted access using default/known accounts (`labuser`).                 |
+| Credential Access  | Brute Force                       | T1110      | High volume of failed login attempts from external IPs.                     |
+|                    | Password Guessing                 | T1110.001  | Indicates attackers may be attempting simple password variations.          |
+| Discovery          | System Network Configuration      | T1016      | Adversaries likely identified system as internet-facing prior to attempts. |
+| Defense Evasion    | (Potential) Log Tampering         | T1070.004  | No successful unauthorized access, may imply log evasion (not confirmed).  |
+
